@@ -118,7 +118,7 @@ requests-file==3.0.1
     # via tldextract
 roman-numerals==4.1.0
     # via sphinx
-scrapy==2.15.1
+scrapy==2.16.0
     # via scrapy-spider-metadata
 scrapy-spider-metadata==0.2.0
     # via -r requirements.in
