@@ -19,6 +19,7 @@ from typing import (
     TypeVar,
     overload,
 )
+from urllib.parse import urlsplit, urlunsplit
 
 from w3lib.url import safe_url_string
 
@@ -262,7 +263,9 @@ class Request(object_ref):
         if self._url_is_verbatim():
             self._url = url
         else:
-            self._url = safe_url_string(url, self.encoding)
+            self._url = _add_slash_if_path_is_empty(
+                safe_url_string(url, self.encoding)
+            )
 
         if (
             "://" not in self._url
@@ -408,6 +411,19 @@ class Request(object_ref):
         if type(self) is not Request:  # pylint: disable=unidiomatic-typecheck
             d["_class"] = self.__module__ + "." + self.__class__.__name__
         return d
+
+
+def _add_slash_if_path_is_empty(url: str) -> str:
+    """Add a ``/`` path to *url* when it has a network location and a query
+    string but an empty path, so that the query string is not left directly
+    after the authority (e.g. ``http://host?a=b`` becomes ``http://host/?a=b``).
+    Such a URL is otherwise sent on the wire with an empty request target and
+    rejected by many servers with a 400 response.
+    """
+    parts = urlsplit(url)
+    if parts.netloc and parts.query and not parts.path:
+        return urlunsplit(parts._replace(path="/"))
+    return url
 
 
 def _find_method(obj: Any, func: Callable[..., Any]) -> str:

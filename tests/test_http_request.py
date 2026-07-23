@@ -100,6 +100,15 @@ class TestRequest:
         r = self.request_class(url="http://www.scrapy.org/path")
         assert r.url == "http://www.scrapy.org/path"
 
+    def test_url_empty_path_with_query(self):
+        # A query string right after the authority (empty path) must get a "/"
+        # path, otherwise the request target is empty and servers reject it.
+        r = self.request_class(url="http://www.scrapy.org?url=value")
+        assert r.url == "http://www.scrapy.org/?url=value"
+        # A bare authority (no query) must be left untouched.
+        r = self.request_class(url="http://www.scrapy.org")
+        assert r.url == "http://www.scrapy.org"
+
     def test_url_quoting(self):
         r = self.request_class(url="http://www.scrapy.org/blank%20space")
         assert r.url == "http://www.scrapy.org/blank%20space"
