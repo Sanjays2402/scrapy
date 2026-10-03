@@ -31,7 +31,7 @@ cssselect==1.4.0
     #   scrapy
 defusedxml==0.7.1
     # via scrapy
-docutils==0.22.4
+docutils==0.21.2
     # via
     #   sphinx
     #   sphinx-markdown-builder
@@ -39,7 +39,7 @@ docutils==0.22.4
 filelock==3.25.2
     # via tldextract
 h2==4.3.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 hpack==4.1.0
     # via h2
 hyperframe==6.1.0
@@ -87,7 +87,7 @@ parsel==1.11.0
     #   scrapy
 protego==0.6.0
     # via scrapy
-pyasn1==0.6.3
+pyasn1==0.6.4
     # via
     #   pyasn1-modules
     #   service-identity
@@ -97,7 +97,7 @@ pycparser==3.0
     # via cffi
 pydantic==2.12.5
     # via
-    #   -r requirements.in
+    #   -r docs/requirements.in
     #   scrapy-spider-metadata
 pydantic-core==2.41.5
     # via pydantic
@@ -116,19 +116,17 @@ requests==2.33.0
     #   tldextract
 requests-file==3.0.1
     # via tldextract
-roman-numerals==4.1.0
-    # via sphinx
 scrapy==2.16.0
     # via scrapy-spider-metadata
 scrapy-spider-metadata==0.2.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 service-identity==24.2.0
     # via scrapy
 snowballstemmer==3.0.1
     # via sphinx
-sphinx==9.1.0
+sphinx==8.1.3
     # via
-    #   -r requirements.in
+    #   -r docs/requirements.in
     #   sphinx-copybutton
     #   sphinx-last-updated-by-git
     #   sphinx-llms-txt
@@ -146,15 +144,15 @@ sphinx-llms-txt @ git+https://github.com/zytedata/sphinx-llms-txt.git@5e8866cb0c
 sphinx-markdown-builder @ git+https://github.com/zytedata/sphinx-markdown-builder.git@cfe4c0bfd7b4542f7e6b65a58cdf9ec765829940
     # via sphinx-scrapy
 sphinx-notfound-page==1.1.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 sphinx-rtd-dark-mode==1.3.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 sphinx-rtd-theme==3.1.0
     # via
-    #   -r requirements.in
+    #   -r docs/requirements.in
     #   sphinx-rtd-dark-mode
 sphinx-scrapy @ git+https://github.com/scrapy/sphinx-scrapy.git@0.8.5
-    # via -r requirements.in
+    # via -r docs/requirements.in
 sphinx-sitemap==2.9.0
     # via sphinx-scrapy
 sphinxcontrib-applehelp==2.0.0
@@ -175,12 +173,19 @@ tabulate==0.10.0
     # via sphinx-markdown-builder
 tldextract==5.3.1
     # via scrapy
+tomli==2.4.1
+    # via
+    #   incremental
+    #   sphinx
+    #   sphinx-scrapy
 twisted==25.5.0
     # via scrapy
 typing-extensions==4.15.0
     # via
+    #   cryptography
     #   pydantic
     #   pydantic-core
+    #   pyopenssl
     #   twisted
     #   typing-inspection
 typing-inspection==0.4.2
